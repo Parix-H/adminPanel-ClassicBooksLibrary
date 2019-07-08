@@ -1,0 +1,16 @@
+pdoupdae: 
+
+<form action="updateBook.php?id=<?=$row['bookID']?>&action=update" method="GET" id="updateBook<?=$row['bookID']?>">
+
+				<input type="hidden" value="<?php echo $book['BookID']; ?>" name=BookID>
+
+
+updatebook:
+
+require ("../../model/db.php");
+// require ("../../model/dbFunctions.php");
+// require ("../../model/testInput.php");
+
+$stmt = $conn->prepare("SELECT * FROM book WHERE BookID = :BookID");
+$stmt->bindParam(':BookID' , $_POST['BookID']);
+$edit = $stmt->fetch();
